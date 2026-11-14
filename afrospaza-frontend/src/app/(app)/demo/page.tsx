@@ -51,7 +51,7 @@ export default function AdversarialDemoPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-surface-elevated/80 text-zinc-400 font-semibold border-b border-border">
+              <thead className="bg-slate-50/80 text-slate-500 font-bold border-b border-slate-200">
                 <tr>
                   <th className="py-2.5 px-3">Timestamp</th>
                   <th className="py-2.5 px-3">Attack Vector</th>
@@ -60,15 +60,15 @@ export default function AdversarialDemoPage() {
                   <th className="py-2.5 px-3">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/60">
+              <tbody className="divide-y divide-slate-100">
                 {results.map((res) => (
-                  <tr key={res.id} className="text-zinc-200">
-                    <td className="py-2.5 px-3 font-mono text-zinc-500">{res.timestamp}</td>
-                    <td className="py-2.5 px-3 font-bold text-white">{res.attackType}</td>
-                    <td className="py-2.5 px-3 text-orange-400 font-medium">{res.interceptingLayer}</td>
-                    <td className="py-2.5 px-3 text-zinc-400 max-w-xs truncate">{res.reason}</td>
+                  <tr key={res.id} className="text-slate-800">
+                    <td className="py-2.5 px-3 font-mono text-slate-400">{res.timestamp}</td>
+                    <td className="py-2.5 px-3 font-bold text-slate-900">{res.attackType}</td>
+                    <td className="py-2.5 px-3 text-emerald-800 font-semibold">{res.interceptingLayer}</td>
+                    <td className="py-2.5 px-3 text-slate-500 max-w-xs truncate">{res.reason}</td>
                     <td className="py-2.5 px-3">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/30">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-50 text-red-700 border border-red-200">
                         {res.actionTaken}
                       </span>
                     </td>

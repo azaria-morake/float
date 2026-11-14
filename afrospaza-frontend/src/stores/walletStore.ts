@@ -1,31 +1,42 @@
 import { create } from "zustand";
 import { XRPLWalletState } from "@/types/xrpl";
+import { api } from "@/lib/api";
+
+const DEFAULT_TREASURY_ADDRESS = "rLsNM7Bw7SoibQrmosxdUyNYuA6EdCTYfu";
 
 interface WalletStoreState extends XRPLWalletState {
-  connect: (address?: string) => void;
+  privyUserId: string | null;
+  privyEmail: string | null;
+  connect: (address?: string, privyData?: { userId?: string; email?: string }) => void;
   disconnect: () => void;
   setNetwork: (network: "mainnet" | "testnet" | "devnet") => void;
   refreshBalances: () => Promise<void>;
 }
 
-export const useWalletStore = create<WalletStoreState>((set) => ({
-  address: "rMkJ62hFhP57L93VNmG9u4c7w1aBxQ7Pky",
+export const useWalletStore = create<WalletStoreState>((set, get) => ({
+  address: DEFAULT_TREASURY_ADDRESS,
   network: "testnet",
   isConnected: true,
-  xrpBalance: 2450.8,
+  xrpBalance: 980.5,
   rlusdBalance: 5120.45,
   trustlineActive: true,
-  activeChannelsCount: 3,
+  activeChannelsCount: 1,
+  privyUserId: null,
+  privyEmail: null,
 
-  connect: (address = "rMkJ62hFhP57L93VNmG9u4c7w1aBxQ7Pky") =>
+  connect: (
+    address = DEFAULT_TREASURY_ADDRESS,
+    privyData?: { userId?: string; email?: string }
+  ) => {
     set({
       address,
       isConnected: true,
-      xrpBalance: 2450.8,
-      rlusdBalance: 5120.45,
-      trustlineActive: true,
-      activeChannelsCount: 3,
-    }),
+      privyUserId: privyData?.userId || null,
+      privyEmail: privyData?.email || null,
+    });
+    // Trigger async balance refresh from live XRPL testnet
+    get().refreshBalances();
+  },
 
   disconnect: () =>
     set({
@@ -35,15 +46,25 @@ export const useWalletStore = create<WalletStoreState>((set) => ({
       rlusdBalance: 0,
       trustlineActive: false,
       activeChannelsCount: 0,
+      privyUserId: null,
+      privyEmail: null,
     }),
 
   setNetwork: (network) => set({ network }),
 
   refreshBalances: async () => {
-    // Simulating refreshed on-chain ledger values
-    set((state) => ({
-      xrpBalance: state.xrpBalance + (Math.random() * 2 - 1),
-      rlusdBalance: state.rlusdBalance + (Math.random() * 5 - 2.5),
-    }));
+    const addr = get().address;
+    if (!addr) return;
+    try {
+      const data = await api.getXRPLAccount(addr);
+      set({
+        xrpBalance: data.xrp_balance,
+        rlusdBalance: data.rlusd_balance,
+        trustlineActive: data.trustline_active,
+        activeChannelsCount: data.active_channels_count,
+      });
+    } catch {
+      // Keep existing balance if backend is booting
+    }
   },
 }));

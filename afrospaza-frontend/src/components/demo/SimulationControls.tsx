@@ -47,10 +47,10 @@ export function SimulationControls({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-base font-bold text-white tracking-tight">
+          <h3 className="text-base font-bold text-slate-900 tracking-tight">
             Trigger Adversarial Attack Vectors
           </h3>
-          <p className="text-xs text-zinc-400">
+          <p className="text-xs text-slate-500">
             Select an exploit vector to test AfroSpaza&apos;s multi-layered defense architecture.
           </p>
         </div>
@@ -70,16 +70,16 @@ export function SimulationControls({
             key={att.type}
             disabled={isRunning}
             onClick={() => onRunAttack(att.type)}
-            className="p-3.5 rounded-xl bg-surface-elevated/70 border border-border hover:border-orange-500/40 text-left transition-all hover:bg-surface-elevated disabled:opacity-50 cursor-pointer flex items-start gap-3 group"
+            className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200 hover:border-emerald-600/50 text-left transition-all hover:bg-emerald-50/40 disabled:opacity-50 cursor-pointer flex items-start gap-3 group shadow-sm"
           >
-            <div className="p-2 rounded-lg bg-surface border border-border group-hover:scale-105 transition-transform shrink-0 mt-0.5">
+            <div className="p-2 rounded-lg bg-white border border-slate-200 group-hover:scale-105 transition-transform shrink-0 mt-0.5 shadow-xs">
               {att.icon}
             </div>
             <div>
-              <span className="text-xs font-bold text-white group-hover:text-orange-400 transition-colors block">
+              <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors block">
                 {att.label}
               </span>
-              <p className="text-[11px] text-zinc-400 mt-0.5 leading-relaxed">
+              <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
                 {att.desc}
               </p>
             </div>

@@ -14,12 +14,12 @@ export function AttackVisualizer({ layers }: AttackVisualizerProps) {
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Shield size={16} className="text-orange-400" />
-          <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+          <Shield size={16} className="text-emerald-600" />
+          <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
             Active Defense Pipeline (4 Layers)
           </h3>
         </div>
-        <span className="text-[11px] text-zinc-500 font-mono">Defense in Depth</span>
+        <span className="text-[11px] text-slate-400 font-mono">Defense in Depth</span>
       </div>
 
       <div className="space-y-2.5">

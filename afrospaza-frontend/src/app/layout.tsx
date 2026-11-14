@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import { PrivyAuthProvider } from "@/providers/PrivyAuthProvider";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} — Autonomous Micro-Commerce & XRPL Settlement`,
-  description: siteConfig.description,
+  title: "AfroSpaza — Buy Local. Live Better. (Autonomous XRPL Trade)",
+  description: "African cross-border trade marketplace for informal spaza merchants powered by XRPL and autonomous AI agents.",
   icons: {
     icon: "/icons/spaza.svg",
   },
@@ -16,9 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="bg-background text-zinc-100 antialiased selection:bg-orange-500 selection:text-white">
-        {children}
+    <html lang="en">
+      <body className="bg-slate-50 text-slate-900 antialiased">
+        <PrivyAuthProvider>{children}</PrivyAuthProvider>
       </body>
     </html>
   );

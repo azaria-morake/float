@@ -16,12 +16,12 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variantStyles = {
-    orange: "bg-orange-500/15 text-orange-400 border-orange-500/30",
-    green: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
-    blue: "bg-blue-500/15 text-blue-400 border-blue-500/30",
-    red: "bg-red-500/15 text-red-400 border-red-500/30",
-    yellow: "bg-amber-500/15 text-amber-400 border-amber-500/30",
-    neutral: "bg-zinc-800/60 text-zinc-300 border-zinc-700/50",
+    orange: "bg-orange-50 text-orange-700 border-orange-200",
+    green: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    blue: "bg-blue-50 text-blue-700 border-blue-200",
+    red: "bg-red-50 text-red-700 border-red-200",
+    yellow: "bg-amber-50 text-amber-800 border-amber-200",
+    neutral: "bg-slate-100 text-slate-700 border-slate-200",
   }[variant];
 
   const dotColors = {

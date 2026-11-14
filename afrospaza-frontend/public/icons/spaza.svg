@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
-  <rect width="40" height="40" rx="10" fill="#f97316"/>
-  <path d="M12 28L20 12L28 28H23L20 22L17 28H12Z" fill="white"/>
-  <circle cx="20" cy="18" r="3" fill="#08090c"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Africa Continent Silhouette -->
+  <path d="M35 15 C45 12, 60 14, 72 20 C78 24, 76 30, 72 36 C70 40, 76 44, 78 50 C80 56, 74 62, 70 66 C65 72, 60 80, 56 88 C52 90, 48 88, 46 82 C44 76, 40 70, 36 64 C32 58, 26 54, 22 48 C18 42, 20 34, 24 28 C28 22, 28 18, 35 15 Z" fill="#16a34a"/>
+  <!-- White Shopping Cart Inside -->
+  <path d="M38 38 H44 L48 54 H62 L66 42 H46" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="50" cy="59" r="2.5" fill="white"/>
+  <circle cx="60" cy="59" r="2.5" fill="white"/>
 </svg>

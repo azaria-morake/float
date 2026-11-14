@@ -36,7 +36,7 @@ export function Modal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn">
       <div
         className="fixed inset-0"
         onClick={onClose}
@@ -44,22 +44,22 @@ export function Modal({
       />
       <div
         className={cn(
-          "relative w-full max-w-lg glass-card p-6 md:p-8 border border-white/10 shadow-2xl z-10",
+          "relative w-full max-w-lg bg-white border border-slate-200/90 rounded-2xl p-6 md:p-8 shadow-2xl z-10 text-slate-900",
           className
         )}
       >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-zinc-400 hover:text-white transition-colors"
+          className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 transition-colors p-1 rounded-lg hover:bg-slate-100"
           aria-label="Close"
         >
           <X size={20} />
         </button>
 
         <div className="mb-5">
-          <h3 className="text-xl font-bold text-white tracking-tight">{title}</h3>
+          <h3 className="text-xl font-bold text-slate-900 tracking-tight">{title}</h3>
           {description && (
-            <p className="text-sm text-zinc-400 mt-1">{description}</p>
+            <p className="text-sm text-slate-500 mt-1">{description}</p>
           )}
         </div>
 

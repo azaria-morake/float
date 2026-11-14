@@ -12,26 +12,26 @@ export function StatsGrid() {
   const stats = [
     {
       title: "Today's Orders Settled",
-      value: "14 Orders",
-      subtext: "100% on-chain delivery verified",
+      value: "6 Orders",
+      subtext: "Kenya ➔ SA Cross-Border Verified",
       icon: <ShoppingBag size={18} className="text-orange-400" />,
     },
     {
       title: "XRPL Active Escrows",
-      value: "3 Escrows",
-      subtext: "Value: 480.00 RLUSD locked",
+      value: "1 Escrow",
+      subtext: "Value: 94.52 RLUSD locked on-ledger",
       icon: <Coins size={18} className="text-blue-400" />,
     },
     {
       title: "Adversarial Threats Intercepted",
-      value: "8 Attacks",
-      subtext: "0 mandate breaches (100% blocked)",
+      value: "4 Intercepted",
+      subtext: "100% blocked by Zero-LLM Guard",
       icon: <Shield size={18} className="text-emerald-400" />,
     },
     {
-      title: "Avg Fulfillment Speed",
-      value: "42 mins",
-      subtext: "Across Soweto distribution corridors",
+      title: "Cross-Border Settlement",
+      value: "3-5 Seconds",
+      subtext: "Instant XRPL vs 3-5 days SWIFT",
       icon: <CheckCircle size={18} className="text-purple-400" />,
     },
   ];

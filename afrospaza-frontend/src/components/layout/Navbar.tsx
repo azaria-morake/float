@@ -1,86 +1,91 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { siteConfig } from "@/config/site";
-import { WalletConnectButton } from "@/components/wallet/WalletConnectButton";
-import { NetworkSwitcher } from "@/components/wallet/NetworkSwitcher";
-import { Menu, Zap, ShieldAlert } from "lucide-react";
+import { Search, MapPin, Bell, ChevronDown, Menu, ShieldAlert, Sparkles, User } from "lucide-react";
 import { useUIStore } from "@/stores/uiStore";
 import { useMandateStore } from "@/stores/mandateStore";
+import { WalletConnectButton } from "@/components/wallet/WalletConnectButton";
+import { usePrivy } from "@/providers/PrivyAuthProvider";
 
 export function Navbar() {
-  const pathname = usePathname();
   const toggleSidebar = useUIStore((s) => s.toggleSidebar);
   const killSwitchActive = useMandateStore((s) => s.mandate.killSwitchActive);
+  const [searchQuery, setSearchQuery] = useState("");
+  const { user } = usePrivy();
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 md:px-6">
       {killSwitchActive && (
-        <div className="bg-red-500/20 border-b border-red-500/40 px-4 py-1.5 flex items-center justify-center gap-2 text-xs font-semibold text-red-300">
-          <ShieldAlert size={14} className="text-red-400 animate-pulse" />
+        <div className="bg-red-50 border-b border-red-200 -mx-4 md:-mx-6 px-4 py-1.5 flex items-center justify-center gap-2 text-xs font-semibold text-red-700">
+          <ShieldAlert size={14} className="text-red-600 animate-pulse" />
           <span>EMERGENCY KILL SWITCH ACTIVE — All autonomous agent spend paused.</span>
         </div>
       )}
 
-      <div className="flex items-center justify-between h-16 px-4 md:px-6">
-        {/* Left: Mobile hamburger + Brand */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={toggleSidebar}
-            className="md:hidden p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-white/5"
-            aria-label="Toggle navigation menu"
-          >
-            <Menu size={20} />
-          </button>
+      <div className="flex items-center justify-between h-16 gap-4">
+        {/* Mobile menu trigger */}
+        <button
+          onClick={toggleSidebar}
+          className="md:hidden p-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100"
+          aria-label="Toggle menu"
+        >
+          <Menu size={20} />
+        </button>
 
-          <Link href="/dashboard" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-orange-glow group-hover:scale-105 transition-transform">
-              <Zap size={20} className="text-white fill-white" />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-base tracking-tight text-white">
-                  Afro<span className="text-orange-500">Spaza</span>
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-wider bg-orange-500/15 text-orange-400 px-1.5 py-0.5 rounded border border-orange-500/30">
-                  XRPL
-                </span>
-              </div>
-              <span className="text-[10px] text-zinc-500 -mt-0.5 font-medium hidden sm:inline">
-                Township Autonomous Agent Mesh
-              </span>
-            </div>
-          </Link>
+        {/* Center/Left Search Bar */}
+        <div className="flex-1 max-w-2xl">
+          <div className="relative">
+            <Search
+              size={18}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+            />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search for products or spazas..."
+              className="w-full pl-10 pr-4 py-2 rounded-full bg-slate-100/90 hover:bg-slate-100 focus:bg-white border border-slate-200/80 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/10 text-xs text-slate-800 placeholder-slate-400 focus:outline-none transition-all shadow-inner"
+            />
+          </div>
         </div>
 
-        {/* Center: Desktop Top Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1">
-          {siteConfig.navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                  isActive
-                    ? "bg-orange-500/15 text-orange-400 border border-orange-500/30"
-                    : "text-zinc-400 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Right: Network + XRPL Wallet */}
+        {/* Right Action Icons & Profile */}
         <div className="flex items-center gap-3">
-          <div className="hidden sm:block">
-            <NetworkSwitcher />
+          {/* Location Picker */}
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-xs font-medium text-slate-700 cursor-pointer transition-colors">
+            <MapPin size={14} className="text-slate-500 shrink-0" />
+            <span>Johannesburg, ZA</span>
+            <ChevronDown size={13} className="text-slate-400" />
           </div>
-          <WalletConnectButton />
+
+          {/* Notifications Bell */}
+          <Link
+            href="/orders"
+            className="relative p-2 rounded-full hover:bg-slate-100 text-slate-600 transition-colors"
+            title="Notifications"
+          >
+            <Bell size={19} />
+            <span className="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white rounded-full text-[9px] font-bold flex items-center justify-center">
+              3
+            </span>
+          </Link>
+
+          {/* Privy XRPL Wallet Connect Button */}
+          <div className="hidden md:block">
+            <WalletConnectButton />
+          </div>
+
+          {/* User Profile Avatar */}
+          <Link
+            href="/settings"
+            className="flex items-center gap-2 pl-1 group cursor-pointer"
+            title="Thandi Mokoena (Zuri Eats & Spaza)"
+          >
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-emerald-600 flex items-center justify-center text-white font-bold text-xs ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/50 transition-all">
+              TM
+            </div>
+          </Link>
         </div>
       </div>
     </header>

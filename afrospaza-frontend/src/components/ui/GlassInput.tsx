@@ -19,30 +19,30 @@ export function GlassInput({
   return (
     <div className="w-full space-y-1.5">
       {label && (
-        <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
+        <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700">
           {label}
         </label>
       )}
       <div className="relative flex items-center">
         {prefixIcon && (
-          <span className="absolute left-3.5 text-zinc-500 pointer-events-none">
+          <span className="absolute left-3.5 text-slate-400 pointer-events-none">
             {prefixIcon}
           </span>
         )}
         <input
           className={cn(
-            "w-full bg-surface/90 border border-border rounded-xl px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/50 transition-all",
+            "w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30 transition-all shadow-sm",
             prefixIcon && "pl-10",
-            error && "border-red-500/60 focus:border-red-500 focus:ring-red-500/40",
+            error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
             className
           )}
           {...props}
         />
       </div>
       {error ? (
-        <p className="text-xs text-red-400 font-medium">{error}</p>
+        <p className="text-xs text-red-500 font-medium">{error}</p>
       ) : helperText ? (
-        <p className="text-xs text-zinc-500">{helperText}</p>
+        <p className="text-xs text-slate-500">{helperText}</p>
       ) : null}
     </div>
   );

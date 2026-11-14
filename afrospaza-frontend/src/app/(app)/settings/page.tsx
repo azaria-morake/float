@@ -46,11 +46,11 @@ export default function SettingsPage() {
           <div className="flex items-center gap-2">
             <Power
               size={20}
-              className={mandate.killSwitchActive ? "text-red-400 animate-pulse" : "text-zinc-400"}
+              className={mandate.killSwitchActive ? "text-red-500 animate-pulse" : "text-slate-400"}
             />
             <div>
-              <h3 className="text-base font-bold text-white">Emergency Kill Switch</h3>
-              <p className="text-xs text-zinc-400">
+              <h3 className="text-base font-bold text-slate-900">Emergency Kill Switch</h3>
+              <p className="text-xs text-slate-500">
                 Immediately block all agent micro-transactions and pause XRPL payment channel claims.
               </p>
             </div>
@@ -71,8 +71,8 @@ export default function SettingsPage() {
 
       {/* Daily Limits & Safety Floor */}
       <GlassCard className="space-y-6">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-          <Sliders size={16} className="text-orange-400" />
+        <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+          <Sliders size={16} className="text-emerald-700" />
           <span>Global Spending Ceilings</span>
         </h3>
 
@@ -103,10 +103,10 @@ export default function SettingsPage() {
       <GlassCard className="space-y-5">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
               Category Rules & Caps ({mandate.rules.length})
             </h3>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-slate-500">
               Granular policies governing each product replenishment vertical.
             </p>
           </div>
@@ -116,27 +116,27 @@ export default function SettingsPage() {
           {mandate.rules.map((rule) => (
             <div
               key={rule.id}
-              className="p-4 rounded-xl bg-surface-elevated/80 border border-border flex flex-col md:flex-row md:items-center justify-between gap-4"
+              className="p-4 rounded-xl bg-slate-50/80 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-white text-sm">{rule.category}</span>
+                  <span className="font-bold text-slate-900 text-sm">{rule.category}</span>
                   {rule.enabled ? (
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-semibold border border-emerald-500/30">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold border border-emerald-200">
                       Active
                     </span>
                   ) : (
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-500 font-semibold">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-500 font-semibold border border-slate-200">
                       Disabled
                     </span>
                   )}
                 </div>
-                <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-400">
-                  <span>Single Tx Cap: <strong className="text-zinc-200">{formatZAR(rule.maxSingleTxZAR)}</strong></span>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                  <span>Single Tx Cap: <strong className="text-slate-800">{formatZAR(rule.maxSingleTxZAR)}</strong></span>
                   <span>•</span>
-                  <span>Daily Cap: <strong className="text-zinc-200">{formatZAR(rule.dailyCapZAR)}</strong></span>
+                  <span>Daily Cap: <strong className="text-slate-800">{formatZAR(rule.dailyCapZAR)}</strong></span>
                   <span>•</span>
-                  <span>Vetted Whitelist: <strong className="text-orange-400">{rule.allowedSellers.length} suppliers</strong></span>
+                  <span>Vetted Whitelist: <strong className="text-emerald-700">{rule.allowedSellers.length} suppliers</strong></span>
                 </div>
               </div>
 

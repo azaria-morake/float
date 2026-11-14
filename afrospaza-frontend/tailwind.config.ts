@@ -10,18 +10,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#08090c",
-        surface: "#0f1117",
-        "surface-elevated": "#171a23",
-        border: "rgba(255, 255, 255, 0.08)",
+        brand: {
+          50: "#f0fdf4",
+          100: "#dcfce7",
+          200: "#bbf7d0",
+          500: "#22c55e",
+          600: "#16a34a",
+          700: "#15803d",
+          800: "#166534",
+          900: "#14532d",
+          DEFAULT: "#1b7a43",
+        },
+        gold: {
+          400: "#facc15",
+          500: "#eab308",
+          600: "#ca8a04",
+          DEFAULT: "#eab308",
+        },
         spaza: {
+          green: "#1b7a43",
+          yellow: "#eab308",
           orange: "#f97316",
-          "orange-hover": "#ea580c",
-          "orange-light": "#ffedd5",
-          "orange-glow": "rgba(249, 115, 22, 0.2)",
-          black: "#08090c",
-          white: "#ffffff",
-          gray: "#94a3b8",
         },
         xrpl: {
           blue: "#2388ff",
@@ -32,11 +41,6 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
-      },
-      boxShadow: {
-        glass: "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
-        "orange-glow": "0 0 25px -5px rgba(249, 115, 22, 0.35)",
-        "blue-glow": "0 0 25px -5px rgba(35, 136, 255, 0.35)",
       },
     },
   },

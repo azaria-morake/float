@@ -2,38 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../styles/glass.css";
-@import "../styles/animations.css";
-
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 8, 9, 12;
-  --background-end-rgb: 15, 17, 23;
+  --foreground: #0f172a;
+  --background: #f8fafc;
+  --brand-green: #1b7a43;
+  --brand-gold: #eab308;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background-color: #08090c;
+  color: #0f172a;
+  background-color: #f8fafc;
   min-height: 100vh;
-  overflow-x: hidden;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom scrollbars */
+/* Subtle modern scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #08090c;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f97316;
+  background: #1b7a43;
 }

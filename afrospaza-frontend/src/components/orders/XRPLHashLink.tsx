@@ -25,7 +25,7 @@ export function XRPLHashLink({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-1.5 font-mono text-xs text-blue-400 hover:text-blue-300 transition-colors underline decoration-blue-500/40 underline-offset-2 ${className}`}
+      className={`inline-flex items-center gap-1.5 font-mono text-xs text-blue-600 hover:text-blue-800 transition-colors underline decoration-blue-400/50 underline-offset-2 ${className}`}
     >
       <span>{truncateHash(hash, 6, 6)}</span>
       <ExternalLink size={12} className="shrink-0 opacity-70" />

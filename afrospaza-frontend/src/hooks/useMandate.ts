@@ -1,8 +1,20 @@
+import { useEffect } from "react";
 import { useMandateStore } from "@/stores/mandateStore";
 
 export function useMandate() {
-  const { mandate, updateDailyBudget, toggleKillSwitch, updateRule, addRule, recordSpend } =
-    useMandateStore();
+  const {
+    mandate,
+    fetchMandate,
+    updateDailyBudget,
+    toggleKillSwitch,
+    updateRule,
+    addRule,
+    recordSpend,
+  } = useMandateStore();
+
+  useEffect(() => {
+    fetchMandate();
+  }, [fetchMandate]);
 
   const remainingDailyZAR = mandate.totalDailyBudgetZAR - mandate.usedTodayZAR;
   const percentUsed = Math.min(
@@ -12,6 +24,7 @@ export function useMandate() {
 
   return {
     mandate,
+    fetchMandate,
     remainingDailyZAR,
     percentUsed,
     updateDailyBudget,
