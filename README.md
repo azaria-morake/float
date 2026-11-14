@@ -5,6 +5,9 @@
 > *"A buyer that can't steal, can't overspend, and leaves an audit trail."*
 
 ---
+## Demo Video with Audio
+
+[▶ Watch Demo Video](https://youtu.be/PPIUV3PQBo0)
 
 ## 📖 Table of Contents
 
